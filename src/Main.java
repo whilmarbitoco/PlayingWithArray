@@ -13,7 +13,7 @@ public class Main {
 
         test.display();
 
-       test.add("Horse", 1);
+       test.add("Horse", 19);
         test.display();
 //        System.out.println(test);
     }

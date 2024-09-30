@@ -27,6 +27,9 @@ public class MyList<T> {
 
     @SuppressWarnings("unchecked")
     public void add(T item, int index) {
+        if (index > size) {
+            return;
+        }
         currentSize++;
         if (currentSize > size) {
             size++;
