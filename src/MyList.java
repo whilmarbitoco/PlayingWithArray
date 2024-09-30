@@ -25,6 +25,37 @@ public class MyList<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public void add(T item, int index) {
+        currentSize++;
+        if (currentSize > size) {
+            size++;
+        }
+
+        if (list[index] == null) {
+            list[index] = item;
+            return;
+        }
+
+        T[] newList = (T[]) new Object[size];
+        T[] oldList = Arrays.copyOf(list, size);
+
+        for (int i = 0; i < size; i++) {
+            if (i != index) {
+                newList[i] = oldList[i];
+            } else {
+                newList[i] = item;
+                break;
+            }
+        }
+
+        for (int i = size - 1; i > index; i--) {
+            newList[i] = oldList[i - 1];
+        }
+
+        list = newList;
+    }
+
     public void delete(int index) {
         if (index > size) {
             return;
@@ -33,7 +64,7 @@ public class MyList<T> {
     }
 
     public void delete(T item) {
-
+        list = deleteItem(item, list);
     }
 
     public void display() {
@@ -47,14 +78,14 @@ public class MyList<T> {
 
     @SuppressWarnings("unchecked")
     private T[] deleteItem(T item, T[] arr) {
-        T[] newList = (T[]) new Object[this.size];
+        size--;
+        T[] newList = (T[]) new Object[size];
 
         for (int i = 0; i < size; i++) {
             if (list[i] != item) {
                 newList[i] = list[i];
             }
         }
-
         return newList;
     }
 

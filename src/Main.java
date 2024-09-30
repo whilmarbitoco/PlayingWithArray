@@ -2,20 +2,19 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        MyList<Integer> test = new MyList<>();
+        MyList<String> test = new MyList<>();
 
-        test.add(1);
-        test.add(2);
-        test.add(3);
-        test.add(4);
-        test.add(5);
-        test.add(6);
-        test.add(7);
+        test.add("Cat");
+        test.add("Dog");
+        test.add("Zebra");
+        test.add("Lion");
+        test.add("Parrot");
+        test.add("Penguin");
 
         test.display();
 
-        test.delete(3);
-        test.delete(2);
+       test.add("Horse", 1);
         test.display();
+//        System.out.println(test);
     }
 }
