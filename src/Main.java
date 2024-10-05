@@ -14,7 +14,7 @@ public class Main {
 
         animals.display();
         System.out.println("-----------");
-        animals.delete("Alligator");
+        animals.delete("0");
         System.out.println("-----------");
         animals.display();
     }

@@ -63,7 +63,6 @@ public class MyNode<T> {
 
                 current.prev.next = current.next;
                 next.prev = next;
-
                 return;
             }
             current = current.next;
@@ -71,8 +70,6 @@ public class MyNode<T> {
     }
 
     public void delete(T element) {
-        size--;
-
         ChildNode<T> current = first;
         for (int i = 0; i < this.size; i++) {
             if (current.element == element) {
@@ -85,9 +82,10 @@ public class MyNode<T> {
 
                 current.prev.next = current.next;
                 next.prev = next;
-
+                size--;
                 return;
             }
+
             current = current.next;
         }
     }
