@@ -1,7 +1,5 @@
 import Classes.ChildNode;
 
-import java.util.LinkedList;
-
 public class MyNode<T> {
     private int size;
     private ChildNode<T>  first;
@@ -51,12 +49,59 @@ public class MyNode<T> {
         this.first.next = tmp;
     }
 
+    public void delete(int index) {
+        if (index >= this.size) {
+            return;
+        }
+        size--;
+        if (index == 0) {
+            this.first = this.first.next;
+            return;
+        }
+
+        ChildNode<T> current = first;
+        for (int i = 0; i < this.size; i++) {
+            if (i == index) {
+                ChildNode<T> tmpLast = current.prev;
+                ChildNode<T> tmpNext = current.next;
+
+                tmpLast.next = current.next;
+                tmpNext.prev = current.prev;
+
+                return;
+            }
+            current = current.next;
+        }
+    }
+
+    public void delete(T element) {
+        size--;
+
+        ChildNode<T> current = first;
+        for (int i = 0; i < this.size; i++) {
+            if (current.element == element) {
+                ChildNode<T> tmpLast = current.prev;
+                ChildNode<T> tmpNext = current.next;
+
+                if (tmpLast == null) {
+                    this.first = tmpNext;
+                    return;
+                }
+
+                tmpLast.next = current.next;
+                tmpNext.prev = current.prev;
+
+                return;
+            }
+            current = current.next;
+        }
+    }
 
     public void display() {
         ChildNode<T> current = first;
         for (int i = 0; i < this.size; i++) {
             System.out.println(current.element);
-            current = current.next;
+            if (current.next != null) current = current.next;
         }
     }
 

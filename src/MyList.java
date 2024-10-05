@@ -63,16 +63,19 @@ public class MyList<T> {
         if (index > size) {
             return;
         }
-        list = deleteItem(list[index], list);
+        list = deleteItem(list[index]);
     }
 
     public T get(int index) {
-        if (index >= this.size) return null;
+        if (index >= this.size) {
+            return null;
+        };
+
         return this.list[index];
     }
 
     public void delete(T item) {
-        list = deleteItem(item, list);
+        list = deleteItem(item);
     }
 
     public void display() {
@@ -85,8 +88,9 @@ public class MyList<T> {
     }
 
     @SuppressWarnings("unchecked")
-    private T[] deleteItem(T item, T[] arr) {
+    private T[] deleteItem(T item) {
         size--;
+        currentSize--;
         T[] newList = (T[]) new Object[size];
 
         for (int i = 0; i < size; i++) {
