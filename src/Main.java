@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        MyList<String> test = new MyList<>();
+        MyNode<String> test = new MyNode<>();
 
         test.add("Cat");
         test.add("Dog");
@@ -10,11 +10,8 @@ public class Main {
         test.add("Lion");
         test.add("Parrot");
         test.add("Penguin");
+        test.addLast("Godzilla");
 
         test.display();
-
-       test.add("Horse", 19);
-        test.display();
-//        System.out.println(test);
     }
 }
