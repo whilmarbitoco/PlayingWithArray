@@ -10,8 +10,8 @@ public class Main {
         test.add("Lion");
         test.add("Parrot");
         test.add("Penguin");
-        test.addLast("Godzilla");
+        test.addFirst("Godzilla");
 
-        test.display();
+        System.out.println(test.peek());
     }
 }

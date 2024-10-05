@@ -20,13 +20,16 @@ public class MyNode<T> {
         size++;
 
         ChildNode<T> newNode = new ChildNode<>(null, null, element);
-
         if (size == 1) {
             this.first = newNode;
             this.last = newNode;
             return;
         }
+
+        ChildNode<T> tmp = this.last;
+
         this.last.next = newNode;
+        newNode.prev = tmp;
         this.last = newNode;
     }
 
@@ -41,6 +44,7 @@ public class MyNode<T> {
             this.last = newNode;
             return;
         }
+        this.first.prev = newNode;
         ChildNode<T> tmp = this.first;
 
         this.first = newNode;
@@ -53,6 +57,14 @@ public class MyNode<T> {
         for (int i = 0; i < this.size; i++) {
             System.out.println(current.element);
             current = current.next;
+        }
+    }
+
+    public void displayFromTail() {
+        ChildNode<T> current = last;
+        for (int i = 0; i < this.size; i++) {
+            System.out.println(current.element);
+            if (current.prev != null) current = current.prev;
         }
     }
 
