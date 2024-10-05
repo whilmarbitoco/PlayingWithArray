@@ -24,10 +24,8 @@ public class MyNode<T> {
             return;
         }
 
-        ChildNode<T> tmp = this.last;
-
         this.last.next = newNode;
-        newNode.prev = tmp;
+        newNode.prev = this.last;
         this.last = newNode;
     }
 
@@ -42,11 +40,10 @@ public class MyNode<T> {
             this.last = newNode;
             return;
         }
-        this.first.prev = newNode;
-        ChildNode<T> tmp = this.first;
 
+        newNode.next = this.first;
+        this.first.prev = newNode;
         this.first = newNode;
-        this.first.next = tmp;
     }
 
     public void delete(int index) {
@@ -62,11 +59,10 @@ public class MyNode<T> {
         ChildNode<T> current = first;
         for (int i = 0; i < this.size; i++) {
             if (i == index) {
-                ChildNode<T> tmpLast = current.prev;
-                ChildNode<T> tmpNext = current.next;
+                ChildNode<T> next = current.prev;
 
-                tmpLast.next = current.next;
-                tmpNext.prev = current.prev;
+                current.prev.next = current.next;
+                next.prev = next;
 
                 return;
             }
@@ -80,16 +76,15 @@ public class MyNode<T> {
         ChildNode<T> current = first;
         for (int i = 0; i < this.size; i++) {
             if (current.element == element) {
-                ChildNode<T> tmpLast = current.prev;
-                ChildNode<T> tmpNext = current.next;
+                ChildNode<T> next = current.prev;
 
-                if (tmpLast == null) {
-                    this.first = tmpNext;
+                if (current.prev == null) {
+                    this.first = current.next;
                     return;
                 }
 
-                tmpLast.next = current.next;
-                tmpNext.prev = current.prev;
+                current.prev.next = current.next;
+                next.prev = next;
 
                 return;
             }
