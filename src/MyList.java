@@ -66,6 +66,11 @@ public class MyList<T> {
         list = deleteItem(list[index], list);
     }
 
+    public T get(int index) {
+        if (index >= this.size) return null;
+        return this.list[index];
+    }
+
     public void delete(T item) {
         list = deleteItem(item, list);
     }

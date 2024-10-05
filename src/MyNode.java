@@ -68,6 +68,17 @@ public class MyNode<T> {
         }
     }
 
+    public T get(int index) {
+        ChildNode<T> current = first;
+        for (int i = 0; i < this.size; i++) {
+            if (i == index) {
+                return current.element;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     public T peek() {
         return this.last.element;
     }
