@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class MyList<T> {
 
-    private int size = 5;
+    private int size = 15;
     private T[] list;
     private int currentSize = 0;
 
@@ -14,9 +14,10 @@ public class MyList<T> {
     public void add(T item) {
         currentSize++;
         if(currentSize > size) {
-            size++;
+            size = (size * 3)/2 + 1;
             list = Arrays.copyOf(list, size);
         }
+
         for (int i = 0; i < size; i++) {
             if (list[i] == null) {
                 list[i] = item;
@@ -28,11 +29,13 @@ public class MyList<T> {
     @SuppressWarnings("unchecked")
     public void add(T item, int index) {
         if (index > size) {
+            System.err.println("MyList out of index");
             return;
         }
         currentSize++;
         if (currentSize > size) {
-            size++;
+            size = (size * 3)/2 + 1;
+            list = Arrays.copyOf(list, size);
         }
 
         if (list[index] == null) {
@@ -40,30 +43,15 @@ public class MyList<T> {
             return;
         }
 
-        T[] newList = (T[]) new Object[size];
-        T[] oldList = Arrays.copyOf(list, size);
 
-        for (int i = 0; i < size; i++) {
-            if (i != index) {
-                newList[i] = oldList[i];
-            } else {
-                newList[i] = item;
-                break;
-            }
-        }
-
-        for (int i = size - 1; i > index; i--) {
-            newList[i] = oldList[i - 1];
-        }
-
-        list = newList;
+        list[index] = item;
     }
 
     public void delete(int index) {
         if (index > size) {
             return;
         }
-        list = deleteItem(list[index]);
+        delete(list[index]);
     }
 
     public T get(int index) {
@@ -74,8 +62,17 @@ public class MyList<T> {
         return this.list[index];
     }
 
+    @SuppressWarnings("unchecked")
     public void delete(T item) {
-        list = deleteItem(item);
+        currentSize--;
+        T[] newList = (T[]) new Object[size];
+
+        for (int i = 0; i < size; i++) {
+            if (list[i] != item) {
+                newList[i] = list[i];
+            }
+        }
+        list = newList;
     }
 
     public void display() {
@@ -87,18 +84,8 @@ public class MyList<T> {
         System.out.println();
     }
 
-    @SuppressWarnings("unchecked")
-    private T[] deleteItem(T item) {
-        size--;
-        currentSize--;
-        T[] newList = (T[]) new Object[size];
-
-        for (int i = 0; i < size; i++) {
-            if (list[i] != item) {
-                newList[i] = list[i];
-            }
-        }
-        return newList;
+    public int getSize() {
+        return this.size;
     }
 
     public T[] getList() {

@@ -3,7 +3,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        MyNode<String> animals = new MyNode<>();
+        MyList<String> animals = new MyList<>();
+
         animals.add("Alligator");
         animals.add("Bull");
         animals.add("Chicken");
@@ -13,9 +14,7 @@ public class Main {
         animals.add("Goat");
 
         animals.display();
-        System.out.println("-----------");
-        animals.delete("0");
-        System.out.println("-----------");
+        animals.add("Test", 4);
         animals.display();
     }
 }
