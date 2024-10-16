@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class MyList<T> {
 
-    private int size = 15;
+    private int size = 5;
     private T[] list;
     private int currentSize = 0;
 
@@ -11,11 +11,16 @@ public class MyList<T> {
         list = (T[]) new Object[this.size];
     }
 
+    private void grow() {
+        size = (size * 3)/2 + 1;
+        list = Arrays.copyOf(list, size);
+        System.out.println(size);
+    }
+
     public void add(T item) {
         currentSize++;
         if(currentSize > size) {
-            size = (size * 3)/2 + 1;
-            list = Arrays.copyOf(list, size);
+           grow();
         }
 
         for (int i = 0; i < size; i++) {
@@ -26,7 +31,6 @@ public class MyList<T> {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void add(T item, int index) {
         if (index > size) {
             System.err.println("MyList out of index");
@@ -34,8 +38,7 @@ public class MyList<T> {
         }
         currentSize++;
         if (currentSize > size) {
-            size = (size * 3)/2 + 1;
-            list = Arrays.copyOf(list, size);
+            grow();
         }
 
         if (list[index] == null) {
@@ -43,8 +46,11 @@ public class MyList<T> {
             return;
         }
 
-
+        for (int i = size - 1; i > index ; i--) {
+            list[i] = list[i - 1];
+        }
         list[index] = item;
+
     }
 
     public void delete(int index) {

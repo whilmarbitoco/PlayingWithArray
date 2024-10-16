@@ -14,7 +14,5 @@ public class Main {
         animals.add("Goat");
 
         animals.display();
-        animals.add("Test", 4);
-        animals.display();
     }
 }
