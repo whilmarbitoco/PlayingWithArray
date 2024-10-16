@@ -71,6 +71,7 @@ public class MyNode<T> {
 
     public void delete(T element) {
         ChildNode<T> current = first;
+
         for (int i = 0; i < this.size; i++) {
             if (current.element == element) {
                 ChildNode<T> next = current.prev;
@@ -90,12 +91,15 @@ public class MyNode<T> {
         }
     }
 
+
     public void display() {
         ChildNode<T> current = first;
-        for (int i = 0; i < this.size; i++) {
-            System.out.println(current.element);
-            if (current.next != null) current = current.next;
+
+        while (current != null) {
+            System.out.print(current.element + " ");
+            current = current.next;
         }
+        System.out.println();
     }
 
     public void displayFromTail() {

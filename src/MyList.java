@@ -14,7 +14,6 @@ public class MyList<T> {
     private void grow() {
         size = (size * 3)/2 + 1;
         list = Arrays.copyOf(list, size);
-        System.out.println(size);
     }
 
     public void add(T item) {
