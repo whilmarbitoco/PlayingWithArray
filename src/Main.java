@@ -3,14 +3,13 @@
 public class Main {
     public static void main(String[] args) {
 
-        MyMap<String, Integer> maps = new MyMap<>();
+    MyNode<String> nodes = new MyNode<>();
 
-        maps.put("FB", 20);
-        maps.put("Ea", 30);
+        for (int i = 0; i < 15; i++) {
+            nodes.add(Integer.toString(i));
+        }
 
-        System.out.println(maps.containsValue(20));
-//        maps.display();
-
+        nodes.recursiveDisplay();
 
 
 

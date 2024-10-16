@@ -91,6 +91,17 @@ public class MyNode<T> {
         }
     }
 
+    public void recursiveDisplay() {
+//        might change everything to recursion
+        recursiveDisplayHelper(first);
+    }
+
+    private void recursiveDisplayHelper(ChildNode<T> current) {
+        if (current == null) return;
+        System.out.print(current.element + " ");
+        recursiveDisplayHelper(current.next);
+
+    }
 
     public void display() {
         ChildNode<T> current = first;
