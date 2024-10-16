@@ -73,7 +73,7 @@ public class MyNode<T> {
         ChildNode<T> current = first;
 
         for (int i = 0; i < this.size; i++) {
-            if (current.element == element) {
+            if (current.element.equals(element)) {
                 ChildNode<T> next = current.prev;
 
                 if (current.prev == null) {
@@ -91,9 +91,34 @@ public class MyNode<T> {
         }
     }
 
+    public void recursiveDelete(T target) {
+        recursiveDeleteHelper(first, target);
+    }
+
+    private void recursiveDeleteHelper(ChildNode<T> current, T target) {
+        if (current == null) return;
+
+        if (current.element.equals(target)) {
+            ChildNode<T> next = current.prev;
+
+            if (current.prev == null) {
+                this.first = current.next;
+                return;
+            }
+
+            current.prev.next = current.next;
+            next.prev = next;
+            size--;
+            return;
+        }
+
+        recursiveDeleteHelper(current.next, target);
+    }
+
     public void recursiveDisplay() {
 //        might change everything to recursion
         recursiveDisplayHelper(first);
+        System.out.println();
     }
 
     private void recursiveDisplayHelper(ChildNode<T> current) {
@@ -130,6 +155,20 @@ public class MyNode<T> {
             current = current.next;
         }
         return null;
+    }
+
+    public T recursiveGet(int index) {
+        return recursiveGetHelper(index, 0, first);
+    }
+
+    private T recursiveGetHelper(int index, int currentIndex, ChildNode<T> current) {
+        if (current == null) return null;
+
+        if (index == currentIndex) {
+            return current.element;
+        }
+       return recursiveGetHelper(index, currentIndex + 1, current.next);
+
     }
 
     public T peek() {

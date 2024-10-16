@@ -10,6 +10,9 @@ public class Main {
         }
 
         nodes.recursiveDisplay();
+        System.out.println( nodes.recursiveGet(3));
+
+//        nodes.recursiveDisplay();
 
 
 
