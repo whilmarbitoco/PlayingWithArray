@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        MyNode<String> animals = new MyNode<>();
+        MyStack<String> animals = new MyStack<>();
 
         animals.add("Alligator");
         animals.add("Bull");
@@ -13,9 +13,7 @@ public class Main {
         animals.add("Fish");
         animals.add("Goat");
 
-        animals.display();
-        animals.delete("Fish");
-        animals.delete("Fish");
-        animals.display();
+
+
     }
 }
