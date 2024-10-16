@@ -3,15 +3,14 @@
 public class Main {
     public static void main(String[] args) {
 
-        MyStack<String> animals = new MyStack<>();
+        MyMap<String, Integer> maps = new MyMap<>();
 
-        animals.add("Alligator");
-        animals.add("Bull");
-        animals.add("Chicken");
-        animals.add("Dinosaur");
-        animals.add("Eagle");
-        animals.add("Fish");
-        animals.add("Goat");
+        maps.put("FB", 20);
+        maps.put("Ea", 30);
+
+        System.out.println(maps.containsValue(20));
+//        maps.display();
+
 
 
 
