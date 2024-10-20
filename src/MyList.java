@@ -54,9 +54,14 @@ public class MyList<T> {
 
     public void delete(int index) {
         if (index > size) {
+            System.err.println("Index is more than size");
             return;
         }
-        delete(list[index]);
+//        delete(list[index]);
+        for (int i = index; i < size - 1; i++) {
+            list[i] = list[i + 1];
+        }
+        currentSize--;
     }
 
     public T get(int index) {

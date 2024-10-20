@@ -117,14 +117,18 @@ public class MyNode<T> {
 
     public void recursiveDisplay() {
 //        might change everything to recursion
-        recursiveDisplayHelper(first);
-        System.out.println();
+        MyList<T> els = new MyList<>();
+        recursiveDisplayHelper(first, els);
+//        System.out.println();
+        els.display();
     }
 
-    private void recursiveDisplayHelper(ChildNode<T> current) {
+    @SuppressWarnings("unchecked")
+    private void recursiveDisplayHelper(ChildNode<T> current, MyList<T> t) {
+
         if (current == null) return;
-        System.out.print(current.element + " ");
-        recursiveDisplayHelper(current.next);
+        t.add(current.element);
+        recursiveDisplayHelper(current.next, t);
 
     }
 
